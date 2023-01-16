@@ -10,7 +10,16 @@
   <form action="/quotes" method="POST">
     <input type="text" placeholder="name" name="name">
     <input type="text" placeholder="quote" name="quote">
+
+    <label for="file">File to upload</label>
+	<input type="file" id="file" accept="image/*">
+	<button>Upload</button>
+    
     <button type="submit">Submit</button>
   </form>
+
+  <div id="app"></div>
+  <!-- Scripts -->
+  <script src="main.js"></script>
 </body>
 </html>
