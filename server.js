@@ -10,6 +10,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     .then(client => {
         console.log('Connected to Database');
         const db = client.db('post-img')
+        const imgCollection = db.collection('imgs')
 
         //===========
         // Middleware
@@ -24,7 +25,11 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         })
 
         app.post('/quotes', (req, res) => {
-        console.log(req.body);
+            imgCollection.insertOne(req.body)
+                .then(result => {
+                    // res.redirect('/')
+                })
+                .catch(error => console.error(error))
         })
 
     })
