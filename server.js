@@ -25,9 +25,9 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         })
 
         app.post('/quotes', (req, res) => {
-            imgCollection.insertOne(req.body)
+            imgCollection.insertOne({name: req.body.name, quote: req.body.quote, image: req.body.image})
                 .then(result => {
-                    // res.redirect('/')
+                    res.redirect('/')
                 })
                 .catch(error => console.error(error))
         })
@@ -35,10 +35,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     })
     
     .catch(error => console.error(error))
-
-
-
-
 
 
 //========
